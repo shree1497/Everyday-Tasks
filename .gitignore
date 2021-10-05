@@ -1,2 +1,5 @@
 
 .DS_Store
+EverydayTasks/EverydayTasks.xcodeproj/xcuserdata/*
+EverydayTasks/EverydayTasks.xcodeproj/project.xcworkspace/xcuserdata/*
+EverydayTasks/build/*
