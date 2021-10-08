@@ -27,20 +27,33 @@ class ViewController: NSViewController, NSComboBoxDataSource{
         
         let lDate1 = Date()
         let lDate2 = Calendar.current.date(byAdding: .day, value: 1, to: lDate1)!
+//        let lDate3 = Calendar.current.date(byAdding: .day, value: 2, to: lDate1)!
+        
+//        print(lDate2 == (lDate2+2))
         
         let task1 = Task(name: "Task1",time: 0.5)
         let task2 = Task(name: "Task2",time: 0.6)
         let task3 = Task(name: "Task3",time: 0.5)
         let task4 = Task(name: "Task4",time: 0.7)
+//        let task5 = Task(name: "Task5",time: 0.4)
         
         
-        myList.myAdd(task: task1, forDate: lDate1);
-        myList.myAdd(task: task2, forDate: lDate1);
+        myList.addTask(task: task1, forDate: lDate1);
+        myList.addTask(task: task2, forDate: lDate1);
         
-        myList.myAdd(task: task3, forDate: lDate2);
-        myList.myAdd(task: task4, forDate: lDate2);
-        myList.myAdd(task: task1, forDate: lDate2);
-        myList.myAdd(task: task2, forDate: lDate2);
+        myList.addTask(task: task3, forDate: lDate2);
+        myList.addTask(task: task4, forDate: lDate2);
+        myList.addTask(task: task1, forDate: lDate2);
+        myList.addTask(task: task2, forDate: lDate2);
+        
+        
+        
+
+        do {
+            try myList.updateTask(oldTask: task4, oldDate: lDate1, newTask: task4, newDate: lDate1+1)
+        } catch {
+            print("Help \(error)")
+        }
         
 //        myList.myPrint()
         // Do any additional setup after loading the view.
@@ -63,7 +76,7 @@ class ViewController: NSViewController, NSComboBoxDataSource{
 
     @IBAction func submitButtonClicked(_ sender: Any) {
         print("submitButtonClicked")
-        myList.myAdd(task: Task(name: mTaskPicker.stringValue, time: mTaskTime.doubleValue), forDate: mDatePicker.dateValue)
+        myList.addTask(task: Task(name: mTaskPicker.stringValue, time: mTaskTime.doubleValue), forDate: mDatePicker.dateValue)
         myList.myPrint()
         self.mTaskPicker.reloadData()
     }
