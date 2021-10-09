@@ -910,7 +910,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="idDateCell" id="8sv-QA-kpn">
-                                                            <rect key="frame" x="18" y="0.0" width="87" height="24"/>
+                                                            <rect key="frame" x="8" y="0.0" width="87" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="H4z-rR-mpx">
@@ -942,7 +942,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="idNameCell" id="OZA-xo-hor">
-                                                            <rect key="frame" x="122" y="0.0" width="79" height="24"/>
+                                                            <rect key="frame" x="112" y="0.0" width="79" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zsm-ef-Tgz">
@@ -974,7 +974,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="idCategoryCell" id="Zm3-xb-ijj">
-                                                            <rect key="frame" x="218" y="0.0" width="87" height="24"/>
+                                                            <rect key="frame" x="208" y="0.0" width="87" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sq9-8E-mTf">
@@ -1006,7 +1006,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="idTimeCell" id="WvM-rY-zKe">
-                                                            <rect key="frame" x="322" y="0.0" width="79" height="24"/>
+                                                            <rect key="frame" x="312" y="0.0" width="79" height="24"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="i9u-45-dwb">
@@ -1046,17 +1046,36 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableHeaderView>
                             </scrollView>
+                            <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QRZ-eA-e2F">
+                                <rect key="frame" x="21" y="22" width="76" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="BHI-aF-Pcp"/>
+                                </constraints>
+                                <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="momentary" id="nTD-2T-iWG">
+                                    <font key="font" metaFont="system"/>
+                                    <segments>
+                                        <segment image="NSRefreshTemplate" width="32"/>
+                                        <segment image="NSMenuMixedStateTemplate" width="32" enabled="NO" tag="1"/>
+                                    </segments>
+                                </segmentedCell>
+                                <connections>
+                                    <action selector="segmentedButtonClicked:" target="G3a-4e-1qn" id="anM-6f-UHh"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="QRZ-eA-e2F" secondAttribute="bottom" constant="24" id="263-cy-oRk"/>
                             <constraint firstItem="7xR-kR-iZY" firstAttribute="leading" secondItem="URC-Zd-iAg" secondAttribute="leading" constant="24" id="70A-s5-9Us"/>
                             <constraint firstAttribute="bottom" secondItem="po5-B2-p0N" secondAttribute="bottom" constant="24" id="DUS-hR-8su"/>
-                            <constraint firstItem="po5-B2-p0N" firstAttribute="top" secondItem="7xR-kR-iZY" secondAttribute="bottom" constant="24" id="PQc-PK-osX"/>
+                            <constraint firstItem="QRZ-eA-e2F" firstAttribute="top" secondItem="7xR-kR-iZY" secondAttribute="bottom" constant="24" id="On2-v7-gPA"/>
                             <constraint firstItem="po5-B2-p0N" firstAttribute="centerX" secondItem="URC-Zd-iAg" secondAttribute="centerX" id="UoI-G6-8bd"/>
                             <constraint firstItem="7xR-kR-iZY" firstAttribute="top" secondItem="URC-Zd-iAg" secondAttribute="top" constant="24" id="fMb-wl-qKv"/>
+                            <constraint firstItem="QRZ-eA-e2F" firstAttribute="leading" secondItem="URC-Zd-iAg" secondAttribute="leading" constant="24" id="j83-L5-9HN"/>
                             <constraint firstAttribute="trailing" secondItem="7xR-kR-iZY" secondAttribute="trailing" constant="24" id="kI2-M4-khA"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="mSegmentedControl" destination="QRZ-eA-e2F" id="snD-pH-xdo"/>
                         <outlet property="mTasksTableView" destination="BjH-jg-w7C" id="f0J-Ta-bXm"/>
                     </connections>
                 </viewController>
@@ -1065,4 +1084,8 @@
             <point key="canvasLocation" x="647" y="655"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="NSMenuMixedStateTemplate" width="14" height="4"/>
+        <image name="NSRefreshTemplate" width="14" height="16"/>
+    </resources>
 </document>

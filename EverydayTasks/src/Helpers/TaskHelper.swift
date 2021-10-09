@@ -49,4 +49,13 @@ class TaskHelper {
         
         try lCoreDataContext.save()
     }
+    
+    class func removeTask(pTaskToRemove : Task) throws -> Void {
+        guard let lCoreDataContext = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
+            throw TaskHelperError.NO_CORE_DATA_CONTEXT
+        }
+        lCoreDataContext.delete(pTaskToRemove)
+        
+        try lCoreDataContext.save()
+    }
 }

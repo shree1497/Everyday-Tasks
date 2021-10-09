@@ -9,14 +9,40 @@ import Cocoa
 
 class TasksViewController: NSViewController{
     
-    let arr = ["Hello1", "World1","Hello2", "World2"]
+    
+    enum SegementedContolIndexes {
+        static let index0:Int = 0
+        static let index1:Int = 1
+    }
+    
     var mTasks : [Task]?
     @IBOutlet weak var mTasksTableView: NSTableView!
+    @IBOutlet weak var mSegmentedControl: NSSegmentedControl!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         populateTaskTableView()
+        
+    }
+    
+    @IBAction func segmentedButtonClicked(_ sender: Any) {
+        
+        let liSelectedSegmentIndex:Int = (sender as? NSSegmentedControl)?.selectedSegment ?? -1
+        
+        switch liSelectedSegmentIndex {
+        case 0:
+            populateTaskTableView()
+            break
+        case 1:
+            removeTaskFromTableView(atIndex: mTasksTableView.selectedRow)
+            populateTaskTableView()
+
+            break
+        default:
+            print("Invalid Segement")
+            break
+        }
         
     }
     
@@ -32,6 +58,17 @@ class TasksViewController: NSViewController{
         }
         DispatchQueue.main.async {
             self.mTasksTableView.reloadData()
+        }
+        
+    }
+    
+    func removeTaskFromTableView(atIndex piIndex:Int) -> Void {
+        if let lTaskToRemove = mTasks?[piIndex] {
+            do {
+                try TaskHelper.removeTask(pTaskToRemove: lTaskToRemove)
+            } catch {
+                print("Removing Task Failed as \(error)")
+            }
         }
         
     }
@@ -96,5 +133,19 @@ extension TasksViewController : NSTableViewDelegate {
         }
         cellView.textField?.stringValue = text ?? ""
         return cellView
+    }
+    
+    func tableViewSelectionDidChange(_ notification: Notification) {
+        let liSelectedRowIndex:Int = (notification.object as? NSTableView)?.selectedRow ?? -1
+        if liSelectedRowIndex != -1 {
+            mSegmentedControl.setEnabled(true, forSegment: SegementedContolIndexes.index1)
+        }
+        else {
+            mSegmentedControl.setEnabled(false, forSegment: SegementedContolIndexes.index1)
+        }
+    }
+    
+    func tableView(_ tableView: NSTableView, didRemove rowView: NSTableRowView, forRow row: Int) {
+        mSegmentedControl.setEnabled(false, forSegment: SegementedContolIndexes.index1)
     }
 }
