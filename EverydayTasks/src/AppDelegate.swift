@@ -15,65 +15,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-//        let entity = NSEntityDescription.entity(forEntityName: "Task", in: self.persistentContainer.viewContext)
-//        let newTask = NSManagedObject(entity: entity!, insertInto: self.persistentContainer.viewContext)
-//
-//        newTask.setValue("Task2", forKey: "mstrName")
-//        newTask.setValue(0.25, forKey: "mdTimeTaken")
-//        newTask.setValue(UUID(), forKey: "mIdentifier")
-//        newTask.setValue("Category2", forKey: "mstrCategory")
-//        newTask.setValue(Calendar.current.date(byAdding: .day, value: 2, to: Date())!, forKey: "mDate")
-//
-//        do {
-//            try self.persistentContainer.viewContext.save()
-//
-//        } catch {
-//
-//            print("Failed saving")
-//        }
-//
-//        newTask.setValue("Task2", forKey: "mstrName")
-//        newTask.setValue(0.8, forKey: "mdTimeTaken")
-//        newTask.setValue(UUID(), forKey: "mIdentifier")
-//        newTask.setValue("Category2", forKey: "mstrCategory")
-//        newTask.setValue(Calendar.current.date(byAdding: .day, value: 1, to: Date())!, forKey: "mDate")
-//
-//        do {
-//            try self.persistentContainer.viewContext.save()
-//
-//        } catch {
-//
-//            print("Failed saving")
-//        }
-
-//        var tasks : [Task]?
-//
-//        do {
-//            tasks = try  self.persistentContainer.viewContext.fetch(Task.fetchRequest())
-//        } catch {
-//            print("Core Data Help \(error)")
-//        }
-        
-//        let deleteRequest = NSBatchDeleteRequest(fetchRequest: Task.fetchRequest())
-//
-//        do {
-//            try self.persistentContainer.persistentStoreCoordinator.execute(deleteRequest, with: self.persistentContainer.viewContext)
-//        } catch  {
-//            print("Remove Error \(error)")
-//        }
-//        do {
-//            let req = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
-//            req.resultType = .dictionaryResultType
-//            req.returnsDistinctResults = true
-//            req.propertiesToFetch = ["mstrName"]
-//            let newtasks = try  self.persistentContainer.viewContext.fetch(req)
-//            print(newtasks)
-//        } catch {
-//            print("Core Data Help \(error)")
-//        }
-//        print(tasks!)
-        
-        
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

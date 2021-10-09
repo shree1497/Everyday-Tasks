@@ -39,4 +39,14 @@ class TaskHelper {
         
         return try lCoreDataContext.fetch(lRequest) as? [Dictionary<String,Any>] ?? [["":""]]
     }
+    
+    class func addTask(withName pstrName:String, timeTaken pdTimeTaken:Double, category pstrCategory:String, date pDate: Date) throws -> Void {
+        guard let lCoreDataContext = (NSApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext else {
+            throw TaskHelperError.NO_CORE_DATA_CONTEXT
+        }
+        let lTask = Task(context: lCoreDataContext)
+        lTask.populateMembers(taskName: pstrName, taskTimeTaken: pdTimeTaken, taskCategory: pstrCategory, taskDate: pDate)
+        
+        try lCoreDataContext.save()
+    }
 }

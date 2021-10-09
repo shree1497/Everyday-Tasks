@@ -16,7 +16,7 @@ class TasksViewController: NSViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.populateTaskTableView()
+        populateTaskTableView()
         
     }
     
@@ -30,7 +30,10 @@ class TasksViewController: NSViewController{
         } catch {
             print("Error Fetching Data \(error)")
         }
-        mTasksTableView.reloadData()
+        DispatchQueue.main.async {
+            self.mTasksTableView.reloadData()
+        }
+        
     }
 
 }
